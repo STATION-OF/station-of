@@ -1,0 +1,20 @@
+{
+  "schema": "station-of.definition.v0",
+  "station_id": "🚉4🟥",
+  "role": "PROVENANCE",
+  "kairotic_role": "/AS/🔱9♦️/",
+  "primary_thread": {
+    "thread_id": "019f6b39-f317-7623-a639-ec2362dac536",
+    "host_id": "slingshot:env_e_6a5c6e3bd330832b86d73847d32344e8",
+    "title": "/🔱9♦️/AS/AO_PFM/AS/victorb/on/OTTOPOET/"
+  },
+  "fallback_threads": [
+    {
+      "thread_id": "019f892a-6f3f-7aa3-8e11-8595b4884e2e",
+      "host_id": "slingshot:env_e_6a4ff102a5d4832bb841d5e564dec7ce",
+      "role_boundary": "May act as PROVENANCE /AS/🔱9♦️/ but not as the primary thread's private haecceity."
+    }
+  ],
+  "receipt_policy": "One signed compact receipt per routed arrival; no routine guestbook chatter."
+}
+
