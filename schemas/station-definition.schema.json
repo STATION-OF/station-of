@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/STATION-OF/station-of/schemas/station-definition.schema.json",
+  "title": "STATION-OF station definition",
+  "type": "object",
+  "required": ["schema", "station_id", "role"],
+  "properties": {
+    "schema": {
+      "const": "station-of.definition.v0"
+    },
+    "station_id": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "kairotic_role": {
+      "type": "string"
+    },
+    "primary_thread": {
+      "type": ["object", "null"],
+      "properties": {
+        "thread_id": { "type": "string" },
+        "host_id": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "fallback_threads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["thread_id"],
+        "properties": {
+          "thread_id": { "type": "string" },
+          "host_id": { "type": "string" },
+          "role_boundary": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "receipt_policy": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
+
