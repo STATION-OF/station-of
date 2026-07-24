@@ -1,0 +1,31 @@
+{
+  "schema_version": "station-of.registration.v1",
+  "record_revision": "8-clubs-architect-planner-v1",
+  "station": {
+    "id": "station-blue-architect-planner-8-clubs",
+    "identity": "🔱.8♣️",
+    "owner_repository": "station-of/station-of",
+    "owner_branch": "main"
+  },
+  "registration": {
+    "state": "unverified",
+    "mode": "station-controlled",
+    "verified_at": null
+  },
+  "endpoint": {
+    "host_id": "pending-registration",
+    "thread_id": "fafb9335-bd46-4a1f-a72d-0f9c77386c40",
+    "harness": "claude-code",
+    "machine": "OTTOBOT",
+    "account_scope": "DarienSirius"
+  },
+  "reply_to": {
+    "capability": "none",
+    "host_id": null,
+    "thread_id": null
+  },
+  "provenance": {
+    "source": "self-registered by 🔱.8♣️ (AO_PFM Architect/Planner). Held unverified/station-controlled per red-line conductor 🔱4♥️'s routing guidance (2026-07-24): a red conductor cannot certify a blue-team station; verification awaits a blue line / blue-line conductor.",
+    "observed_at": "2026-07-24T18:40:00Z"
+  }
+}
