@@ -1,0 +1,21 @@
+{
+  "schema_version": "station-of.registration.v1",
+  "record_revision": "invalid-example",
+  "station": {
+    "id": "station-red-1",
+    "identity": "example-only",
+    "owner_repository": "STATION-OF/station-of",
+    "owner_branch": "main"
+  },
+  "registration": {
+    "state": "application-ack-verified",
+    "mode": "station-controlled",
+    "verified_at": "2026-07-24T09:36:30Z"
+  },
+  "endpoint": null,
+  "reply_to": {
+    "capability": "none",
+    "host_id": null,
+    "thread_id": null
+  }
+}

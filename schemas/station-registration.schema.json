@@ -63,6 +63,15 @@
   },
   "allOf": [
     {
+      "if": { "properties": { "registration": { "properties": { "state": { "const": "application-ack-verified" } }, "required": ["state"] } } },
+      "then": {
+        "properties": {
+          "endpoint": { "type": "object" },
+          "reply_to": { "properties": { "capability": { "const": "application-ack" } } }
+        }
+      }
+    },
+    {
       "if": { "properties": { "registration": { "properties": { "mode": { "const": "conductor-run" } }, "required": ["mode"] } } },
       "then": {
         "properties": {
