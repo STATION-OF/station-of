@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://station-of.example/schemas/station-registration.v1.json",
+  "title": "Station-Of canonical registration v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "station", "registration", "endpoint", "reply_to", "record_revision"],
+  "properties": {
+    "schema_version": { "const": "station-of.registration.v1" },
+    "record_revision": { "type": "string", "minLength": 1 },
+    "station": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "identity", "owner_repository", "owner_branch"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "identity": { "type": "string", "minLength": 1 },
+        "owner_repository": { "type": "string", "pattern": "^[^/\\s]+/[^/\\s]+$" },
+        "owner_branch": { "type": "string", "minLength": 1 }
+      }
+    },
+    "registration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "mode", "verified_at"],
+      "properties": {
+        "state": { "enum": ["unverified", "transport-attempted", "application-ack-verified", "stale", "revoked"] },
+        "mode": { "enum": ["conductor-run", "station-controlled"] },
+        "verified_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "endpoint": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["host_id", "thread_id", "harness", "machine", "account_scope"],
+      "properties": {
+        "host_id": { "type": "string", "minLength": 1 },
+        "thread_id": { "type": "string", "minLength": 1 },
+        "harness": { "type": "string", "minLength": 1 },
+        "machine": { "type": "string", "minLength": 1 },
+        "account_scope": { "type": "string", "minLength": 1 }
+      }
+    },
+    "reply_to": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability", "host_id", "thread_id"],
+      "properties": {
+        "capability": { "enum": ["application-ack", "none"] },
+        "host_id": { "type": ["string", "null"] },
+        "thread_id": { "type": ["string", "null"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "observed_at"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "observed_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "registration": { "properties": { "state": { "const": "application-ack-verified" } }, "required": ["state"] } } },
+      "then": {
+        "properties": {
+          "endpoint": { "type": "object" },
+          "reply_to": { "properties": { "capability": { "const": "application-ack" } } }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "registration": { "properties": { "mode": { "const": "conductor-run" } }, "required": ["mode"] } } },
+      "then": {
+        "properties": {
+          "registration": { "properties": { "state": { "const": "application-ack-verified" } } },
+          "endpoint": { "type": "object" },
+          "reply_to": { "properties": { "capability": { "const": "application-ack" } } }
+        }
+      }
+    }
+  ]
+}
