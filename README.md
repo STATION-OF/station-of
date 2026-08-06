@@ -7,3 +7,7 @@ record revision, but cannot author or silently repair a station's endpoint.
 contract. An endpoint is eligible for a conductor-run arrival only when its
 record is `application-ack-verified`; station-controlled mode remains explicit
 for a registered station that cannot receive conductor arrivals.
+
+Arrival depth is a route concern layered over this registration contract. See
+[`doctrine/arrival-depths.md`](doctrine/arrival-depths.md) for the shared
+express/deep receipt vocabulary used by `TRAIN-OF` lines.
